@@ -28,9 +28,9 @@ namespace Invaders
         public float Rotation { get; set; }
         public Vector2 BulletRotation { get; set; }
         public Vector2 Origin { get; set; }
-        public List<PowerUpsPlayer2> PowerUps { get; set; } 
+        public List<PowerUpsPlayer2> PowerUps { get; set; }
 
-        
+
         // Public booleans
         public bool dead = false;
 
@@ -42,7 +42,7 @@ namespace Invaders
 
         // Constructor(s)
         public PlayerTwo(GraphicsDevice graphicsDevice, List<Texture2D> texture, Color color, float speed, Shot shotPrototype, int shotSpeed)
-        {            
+        {
             this.Texture = texture;
             this.Color = color;
             this.Speed = speed;
@@ -115,19 +115,19 @@ namespace Invaders
                 else
                     frame++;
             }
-    }
+        }
 
         public void GetKeyboardInput(KeyboardState keyboardState, KeyboardState oldKey, GamePadState gamepadState, SoundEffect fireSound)
         {
             if (keyboardState.IsKeyDown(Keys.Left)) { this.Direction = Directions.Left; }
             if (keyboardState.IsKeyDown(Keys.Right)) { this.Direction = Directions.Right; }
-            if (keyboardState.IsKeyDown(Keys.Up))  { this.Direction = Directions.Up; }
+            if (keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.Up; }
             if (keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.Down; }
             if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.NorthEast; }
             if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.NorthWest; }
             if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.SouthEast; }
             if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.SouthWest; }
-            if (keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.Right) && keyboardState.IsKeyUp(Keys.Down) && keyboardState.IsKeyUp(Keys.Up)){ Direction = Directions.None; }
+            if (keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.Right) && keyboardState.IsKeyUp(Keys.Down) && keyboardState.IsKeyUp(Keys.Up)) { Direction = Directions.None; }
 
             if (keyboardState.IsKeyDown(Keys.Space) && this.shotDelayTimer == 0 && !PowerUps.Contains(PowerUpsPlayer2.Duoshot) && !PowerUps.Contains(PowerUpsPlayer2.TripleShot))
             {
@@ -150,7 +150,7 @@ namespace Invaders
                 this.Shots.Add(new Shot(new Vector2(this.Position.X + (Texture[0].Width / 2), this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation - (float)(Math.PI * 0.5f)));
                 this.shotDelayTimer = (int)Math.Round(this.ShotDelay);
             }
-            
+
             if (shotDelayTimer > 0) { shotDelayTimer--; }
         }
 

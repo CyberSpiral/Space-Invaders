@@ -30,7 +30,7 @@ namespace Invaders
         public Vector2 Origin { get; set; }
         public List<Texture2D> ExplosionsTextures { get; set; }
 
-        
+
         // Public booleans
         public bool dead = false;
 
@@ -43,7 +43,7 @@ namespace Invaders
 
         // Constructor(s)
         public Player(GraphicsDevice graphicsDevice, List<Texture2D> texture, Color color, Shot shotPrototype, int shotSpeed, List<Texture2D> textures)
-        {            
+        {
             this.Texture = texture;
             this.Color = color;
             this.Rotation = -(float)(Math.PI / 2);
@@ -85,7 +85,7 @@ namespace Invaders
                     Game1.screenShake += 30.0f;
                     Shots[i].dead = true;
                 }
-                else if((Shots[i].Position.Y < Shots[i].Target.Y) && (Shots[i].Position.Y < this.Position.Y - 20))
+                else if ((Shots[i].Position.Y < Shots[i].Target.Y) && (Shots[i].Position.Y < this.Position.Y - 20))
                 {
                     Explosions.Add(new ExplosionShot(Shots[i].Position, ExplosionsTextures, Color.White));
                     Game1.screenShake += 30.0f;
@@ -122,14 +122,15 @@ namespace Invaders
                 else
                     frame++;
             }
-    }
+        }
 
         public void GetKeyboardInput(KeyboardState keyboardState, MouseState oldMouse, MouseState newMouse, GamePadState gamepadState, SoundEffect fireSound)
         {
             if (keyboardState.IsKeyDown(Keys.Left) || gamepadState.IsButtonDown(Buttons.DPadLeft)) { this.Direction = Directions.Left; }
             if (keyboardState.IsKeyDown(Keys.Right) || gamepadState.IsButtonDown(Buttons.DPadRight)) { this.Direction = Directions.Right; }
             if ((keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.Right)) &&
-                (gamepadState.IsButtonUp(Buttons.DPadLeft) && gamepadState.IsButtonUp(Buttons.DPadRight))) { this.Direction = Directions.None; }
+                (gamepadState.IsButtonUp(Buttons.DPadLeft) && gamepadState.IsButtonUp(Buttons.DPadRight)))
+            { this.Direction = Directions.None; }
 
             if (((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) || gamepadState.IsButtonDown(Buttons.A) || gamepadState.IsButtonDown(Buttons.B) ||
                 gamepadState.IsButtonDown(Buttons.X) || gamepadState.IsButtonDown(Buttons.Y)) && this.shotDelayTimer == 0)

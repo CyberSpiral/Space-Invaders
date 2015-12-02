@@ -18,7 +18,7 @@ namespace Invaders
         int invaderSpeed;
         int score;
         int wave;
-        int flashTimer; 
+        int flashTimer;
         int introTimer;
         int kills;
         int numberOfStars;
@@ -172,7 +172,7 @@ namespace Invaders
             invaderColors.Add(Color.GreenYellow);
             invaderColors.Add(Color.Lime);
             invaderColors.Add(Color.Aquamarine);
-            
+
 
             //Fill texture for crosshair
             crosshairTexture = Content.Load<Texture2D>("crosshair");
@@ -188,11 +188,11 @@ namespace Invaders
             camera = new Camera();
 
             // Initialize players
-            player = new Player(GraphicsDevice, player2D, Color.White, new Shot(new Vector2(0,0), 3f, Content.Load<Texture2D>("player_shot"), Color.Gold, new Vector2(0, 0), 0, new Vector2(0, 0)), playerShotSpeed, explosions);
+            player = new Player(GraphicsDevice, player2D, Color.White, new Shot(new Vector2(0, 0), 3f, Content.Load<Texture2D>("player_shot"), Color.Gold, new Vector2(0, 0), 0, new Vector2(0, 0)), playerShotSpeed, explosions);
             player2 = new PlayerTwo(GraphicsDevice, playerTwo2D, Color.White, 3.85f, new Shot(new Vector2(0, 0), 6.5f, Content.Load<Texture2D>("player_shot"), Color.Gold, new Vector2(0, 0), 0), playerTwoShotSpeed);
 
             // Initialize starting screen with first wave of invaders and starting stars
-            textList.Add(new Text(new Vector2(350,380), font, Color.White, "Moddad av mig!", 60, Vector2.Zero));
+            textList.Add(new Text(new Vector2(350, 380), font, Color.White, "Moddad av mig!", 60, Vector2.Zero));
             GenerateStartingStars();
 
             selectablePowers1 = new List<PowerUpsPlayer1>();
@@ -209,7 +209,7 @@ namespace Invaders
         }
 
         protected override void UnloadContent()
-        {           
+        {
         }
 
         // Main game loop
@@ -238,7 +238,7 @@ namespace Invaders
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.Escape)) { this.Exit(); }
             }
-            else if(betweenRound)
+            else if (betweenRound)
             {
                 if (player1IsIn && player2IsIn)
                 {
@@ -273,6 +273,10 @@ namespace Invaders
                         selectedPower2 = selectablePowers2[2];
                         player2HasSelected = true;
                     }
+                    if (player1HasSelected)
+                    {
+                        startNextRound = true;
+                    }
                 }
                 else if (player1IsIn && !player2IsIn)
                 {
@@ -300,6 +304,10 @@ namespace Invaders
                     {
                         selectedPower2 = selectablePowers2[2];
                         player1HasSelected = true;
+                    }
+                    if (player1HasSelected)
+                    {
+                        startNextRound = true;
                     }
                 }
                 else if (!player1IsIn && player2IsIn)
@@ -569,7 +577,7 @@ namespace Invaders
                                 i.divingAgainst = true;
                             }
                         }
-                        
+
 
                     }
 
@@ -705,7 +713,7 @@ namespace Invaders
             }
 
             RemoveObjects();
-            
+
 
             float frameX = (float)(r.NextDouble() - 0.5) * 2f * screenShake;
             float frameY = (float)(r.NextDouble() - 0.5) * 2f * screenShake;
@@ -737,7 +745,7 @@ namespace Invaders
                 {
                     player.Draw(spriteBatch, playerFlash);
                 }
-                else if(!player1IsIn && !gameHasBegun)
+                else if (!player1IsIn && !gameHasBegun)
                 {
                     spriteBatch.DrawString(font, "Player 1\n Click the \n left mouse \n button to join", new Vector2(50, 50), Color.White);
                 }
@@ -745,11 +753,11 @@ namespace Invaders
                 {
                     player2.Draw(spriteBatch, playerFlash);
                 }
-                else if(!player2IsIn && !gameHasBegun)
+                else if (!player2IsIn && !gameHasBegun)
                 {
                     spriteBatch.DrawString(font, "Player 2\n Press the \n spacebar \n to join", new Vector2(600, 50), Color.White);
                 }
-                if ((player1IsIn && !gameHasBegun)||(player2IsIn && !gameHasBegun))
+                if ((player1IsIn && !gameHasBegun) || (player2IsIn && !gameHasBegun))
                 {
                     spriteBatch.DrawString(font, "Press the\nenter key\nto start\nsingle player", new Vector2(320, 50), Color.White);
                 }
@@ -763,10 +771,10 @@ namespace Invaders
                     spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
                 }
             }
-            
+
             foreach (Invader i in invaderList) { i.Draw(spriteBatch); }
             foreach (Explosion e in explosionList) { e.Draw(spriteBatch); }
-            foreach (Text t in textList) { t.Draw(spriteBatch); }      
+            foreach (Text t in textList) { t.Draw(spriteBatch); }
 
             if (flash) { Flash(); }
 
@@ -871,7 +879,7 @@ namespace Invaders
                         break;
                 }
             }
-            else if(invulnerableTimer < 120 && !shotHimself)
+            else if (invulnerableTimer < 120 && !shotHimself)
             {
                 switch (message)
                 {
@@ -988,7 +996,7 @@ namespace Invaders
                 spriteBatch.Draw(interfaceBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), c);
                 flashTimer--;
             }
-            else { flash = false; }            
+            else { flash = false; }
         }
     }
 }

@@ -699,7 +699,7 @@ namespace Invaders
                 player2HasSelected = false;
                 selectablePowers1.Clear();
                 selectablePowers2.Clear();
-                player1.AddPower(selectedPower1);
+                player.AddPower(selectedPower1);
                 player2.AddPower(selectedPower2);
                 notSelected = true;
                 betweenRound = false;

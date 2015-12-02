@@ -14,7 +14,7 @@ namespace Invaders
     class Invader
     {
         // Public properties
-        public Vector2 Position { get; set; }        
+        public Vector2 Position { get; set; }
         public List<Texture2D> Textures { get; set; }
         public Color Color { get; private set; }
         public int MoveRange { get; set; }

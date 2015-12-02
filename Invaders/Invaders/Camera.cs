@@ -37,6 +37,6 @@ namespace Invaders
             viewMatrix = Matrix.CreateTranslation(new Vector3(-position, 0));
         }
 
-        
+
     }
 }

@@ -17,7 +17,7 @@ namespace Invaders
         public Vector2 Position { get; set; }
         public List<Texture2D> Textures { get; set; }
         public Color Color { get; private set; }
-        
+
         // Public booleans
         public bool dead = false;
 
@@ -36,7 +36,7 @@ namespace Invaders
 
         // Method(s)
         public void Draw(SpriteBatch spriteBatch)
-        {            
+        {
             if (animationDelayTimer == 0)
             {
                 animationDelayTimer = animationDelay;

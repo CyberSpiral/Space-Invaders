@@ -25,7 +25,6 @@ namespace Invaders
 
         // Private members
         private int duration;
-        private int duration2;
 
         // Constructor(s)
         public Text(Vector2 position, SpriteFont spriteFont, Color color, string text, int duration, Vector2 movement)

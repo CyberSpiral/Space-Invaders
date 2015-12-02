@@ -1,0 +1,1 @@
+c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\InvadersContent\obj\x86\Debug\ResolveAssemblyReference.cache

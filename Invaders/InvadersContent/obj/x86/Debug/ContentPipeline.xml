@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>invader01_01.png</Source>
+      <Name>invader01_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\invader01_01.xnb</Output>
+      <Time>2013-10-16T14:30:35.0933+02:00</Time>
+    </Item>
+    <Item>
+      <Source>invader01_02.png</Source>
+      <Name>invader01_02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\invader01_02.xnb</Output>
+      <Time>2013-10-16T14:30:35.1102949+02:00</Time>
+    </Item>
+    <Item>
+      <Source>player.png</Source>
+      <Name>player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\player.xnb</Output>
+      <Time>2013-10-16T14:30:35.1452844+02:00</Time>
+    </Item>
+    <Item>
+      <Source>player_shot.png</Source>
+      <Name>player_shot</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\player_shot.xnb</Output>
+      <Time>2013-10-16T15:08:42.2761995+02:00</Time>
+    </Item>
+    <Item>
+      <Source>font.spritefont</Source>
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2013-10-23T18:51:20.6955448+02:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion_01.png</Source>
+      <Name>explosion_01</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\explosion_01.xnb</Output>
+      <Time>2013-10-24T08:23:29.9491911+02:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion_02.png</Source>
+      <Name>explosion_02</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\explosion_02.xnb</Output>
+      <Time>2013-10-24T08:23:29.9501911+02:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion_03.png</Source>
+      <Name>explosion_03</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\explosion_03.xnb</Output>
+      <Time>2013-10-24T08:23:29.9521911+02:00</Time>
+    </Item>
+    <Item>
+      <Source>star.png</Source>
+      <Name>star</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\star.xnb</Output>
+      <Time>2013-10-24T14:34:57.9603748+02:00</Time>
+    </Item>
+    <Item>
+      <Source>dive.wav</Source>
+      <Name>dive</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\dive.xnb</Output>
+      <Time>2013-10-24T20:21:57.0418993+02:00</Time>
+    </Item>
+    <Item>
+      <Source>explosion.wav</Source>
+      <Name>explosion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\explosion.xnb</Output>
+      <Time>2013-10-24T20:21:57.0448994+02:00</Time>
+    </Item>
+    <Item>
+      <Source>fire.wav</Source>
+      <Name>fire</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\fire.xnb</Output>
+      <Time>2013-10-24T20:21:57.0468996+02:00</Time>
+    </Item>
+    <Item>
+      <Source>dead.mp3</Source>
+      <Name>dead</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\dead.xnb</Output>
+      <Extra>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\dead.wma</Extra>
+      <Time>2013-10-24T20:21:57.0398991+02:00</Time>
+    </Item>
+    <Item>
+      <Source>game.mp3</Source>
+      <Name>game</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\game.xnb</Output>
+      <Extra>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\game.wma</Extra>
+      <Time>2013-10-24T20:21:57.0579002+02:00</Time>
+    </Item>
+    <Item>
+      <Source>win.mp3</Source>
+      <Name>win</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\win.xnb</Output>
+      <Extra>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\win.wma</Extra>
+      <Time>2013-10-24T20:21:57.4279213+02:00</Time>
+    </Item>
+    <Item>
+      <Source>logo.png</Source>
+      <Name>logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\logo.xnb</Output>
+      <Time>2013-10-24T23:18:52.0720443+02:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\InvadersContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\InvadersContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\daniel.drottson\Documents\Visual Studio 2010\Projects\Invaders\Invaders\Invaders\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-08-14T14:39:58.0809779+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

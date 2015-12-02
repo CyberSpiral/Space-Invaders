@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invaders", "Invaders\Invaders\Invaders.csproj", "{2BDB5ED7-1F31-4AFE-9BC9-081B534952A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvadersContent", "Invaders\InvadersContent\InvadersContent.contentproj", "{6C3A9E2C-DCC1-4D17-8B12-E9146DE3F5EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BDB5ED7-1F31-4AFE-9BC9-081B534952A8}.Debug|x86.ActiveCfg = Debug|x86
+		{2BDB5ED7-1F31-4AFE-9BC9-081B534952A8}.Debug|x86.Build.0 = Debug|x86
+		{2BDB5ED7-1F31-4AFE-9BC9-081B534952A8}.Release|x86.ActiveCfg = Release|x86
+		{2BDB5ED7-1F31-4AFE-9BC9-081B534952A8}.Release|x86.Build.0 = Release|x86
+		{6C3A9E2C-DCC1-4D17-8B12-E9146DE3F5EA}.Debug|x86.ActiveCfg = Debug|x86
+		{6C3A9E2C-DCC1-4D17-8B12-E9146DE3F5EA}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

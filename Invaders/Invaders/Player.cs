@@ -29,8 +29,9 @@ namespace Invaders
         public Vector2 BulletRotation { get; set; }
         public Vector2 Origin { get; set; }
         public List<Texture2D> ExplosionsTextures { get; set; }
+        public List<PowerUpsPlayer1> PowerUps { get; set; }
 
-        
+
         // Public booleans
         public bool dead = false;
 
@@ -157,6 +158,13 @@ namespace Invaders
             if (!playerFlash)
             {
                 spriteBatch.Draw(this.Texture[frame], this.Position, null, Color, Rotation + (float)(Math.PI * 0.5f), new Vector2(this.Texture[0].Width / 2, this.Texture[0].Height / 2), 1f, SpriteEffects.None, 1);
+            }
+        }
+
+        public void AddPower(PowerUpsPlayer1 power)
+        {
+            {
+                PowerUps.Add(power);
             }
         }
     }

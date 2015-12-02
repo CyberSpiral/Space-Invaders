@@ -167,7 +167,7 @@ namespace Invaders
         }
         public void AddPower(PowerUpsPlayer2 power)
         {
-            if (power == PowerUpsPlayer2.ShotSpeed)
+            if (power == PowerUpsPlayer2.Delay)
             {
                 ShotDelay *= 0.95f;
             }

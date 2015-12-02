@@ -251,12 +251,27 @@ namespace Invaders
                         selectablePowers2.Add((PowerUpsPlayer2)r.Next(0, 5));
                         selectablePowers2.Add((PowerUpsPlayer2)r.Next(0, 5));
                         if (((selectablePowers2[0] != selectablePowers2[1]) && (selectablePowers2[1] != selectablePowers2[2]) && (selectablePowers2[0] != selectablePowers2[2])) &&
-                            ((selectablePowers2[0] != selectablePowers2[1]) && (selectablePowers2[1] != selectablePowers2[2]) && (selectablePowers2[0] != selectablePowers2[2])))
+                            ((selectablePowers1[0] != selectablePowers1[1]) && (selectablePowers1[1] != selectablePowers1[2]) && (selectablePowers1[0] != selectablePowers1[2])))
                             notSelected = false;
                         else
                         {
                             selectablePowers1.Clear(); selectablePowers2.Clear();
                         }
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.I))
+                    {
+                        selectedPower1 = selectablePowers1[0];
+                        player1HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.O))
+                    {
+                        selectedPower1 = selectablePowers1[1];
+                        player1HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.P))
+                    {
+                        selectedPower1 = selectablePowers1[2];
+                        player1HasSelected = true;
                     }
                     if (Keyboard.GetState().IsKeyDown(Keys.D1))
                     {

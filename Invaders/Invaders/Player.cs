@@ -30,6 +30,7 @@ namespace Invaders
         public Vector2 Origin { get; set; }
         public List<Texture2D> ExplosionsTextures { get; set; }
         public List<PowerUpsPlayer1> PowerUps { get; set; }
+        public List<int> ge { get; set; }
 
 
         // Public booleans

@@ -710,12 +710,18 @@ namespace Invaders
                 textList.Add(new Text(new Vector2(350, 200), font, Color.LightBlue, "WAVE:" + wave.ToString().PadLeft(2, '0'), 120, Vector2.Zero));
                 if (wave == maxWaves) { textList.Add(new Text(new Vector2(330, 230), font, Color.White, "LAST WAVE!", 120, Vector2.Zero)); }
                 invaderSpeed = (int)(0.93 * invaderSpeed);
-                player1HasSelected = false;
-                player2HasSelected = false;
-                selectablePowers1.Clear();
-                selectablePowers2.Clear();
-                player.AddPower(selectedPower1);
-                player2.AddPower(selectedPower2);
+                if (player1IsIn)
+                {
+                    player1HasSelected = false;
+                    selectablePowers1.Clear();
+                    player.AddPower(selectedPower1);
+                }
+                if (player2IsIn)
+                {
+                    player2HasSelected = false;
+                    selectablePowers2.Clear();
+                    player2.AddPower(selectedPower2);
+                }
                 notSelected = true;
                 betweenRound = false;
                 startNextRound = false;

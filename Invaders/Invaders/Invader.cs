@@ -22,6 +22,7 @@ namespace Invaders
         public int DiveChance { get; set; }
         public Rectangle HitBox { get { return new Rectangle((int)Position.X, (int)Position.Y, Textures[frame].Width, Textures[frame].Height); } }
         public Vector2 DirectionAgainst { get; set; }
+        public 
 
         // Public booleans
         public bool dead = false;

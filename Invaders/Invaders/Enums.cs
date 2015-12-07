@@ -13,3 +13,7 @@ public enum PowerUpsPlayer1
     // Definitions for different powerups for player one
     ShotSpeed, Delay, ExplosivePower
 }
+public enum Player
+{
+    None, Player1, Player2
+}

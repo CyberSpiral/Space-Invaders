@@ -133,8 +133,15 @@ namespace Invaders
                 (gamepadState.IsButtonUp(Buttons.DPadLeft) && gamepadState.IsButtonUp(Buttons.DPadRight)))
             { this.Direction = Directions.None; }
 
-            if (((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) || gamepadState.IsButtonDown(Buttons.A) || gamepadState.IsButtonDown(Buttons.B) ||
-                gamepadState.IsButtonDown(Buttons.X) || gamepadState.IsButtonDown(Buttons.Y)) && this.shotDelayTimer == 0)
+            if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0)
+            {
+                fireSound.Play(0.5f, 0.0f, 0.0f);
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));
+                /*this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletPlus45Rotation, this.Rotation + 0.2f, new Vector2(newMouse.X + 50, newMouse.Y)));
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletMinus45Rotation, this.Rotation - 0.2f, new Vector2(newMouse.X - 50, newMouse.Y)));*/
+                this.shotDelayTimer = this.shotDelay;
+            }
+            if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0)
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
                 this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));

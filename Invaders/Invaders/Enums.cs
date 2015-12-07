@@ -11,9 +11,9 @@ public enum PowerUpsPlayer2
 public enum PowerUpsPlayer1
 {
     // Definitions for different powerups for player one
-    ShotSpeed, Delay, ExplosivePower
+    ShotSpeed, Delay, ExplosivePower, ShotSpeedDown, MoreDelay
 }
-public enum Player
+public enum PlayerEnum
 {
     None, Player1, Player2
 }

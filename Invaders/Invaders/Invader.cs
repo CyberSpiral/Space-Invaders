@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Fuckboi = System.Math;
 
 namespace Invaders
 {
@@ -22,7 +23,7 @@ namespace Invaders
         public int DiveChance { get; set; }
         public Rectangle HitBox { get { return new Rectangle((int)Position.X, (int)Position.Y, Textures[frame].Width, Textures[frame].Height); } }
         public Vector2 DirectionAgainst { get; set; }
-        public 
+        public PlayerEnum target { get; set;}
 
         // Public booleans
         public bool dead = false;

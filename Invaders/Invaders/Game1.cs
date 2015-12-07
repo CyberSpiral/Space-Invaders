@@ -459,44 +459,43 @@ namespace Invaders
                         textList.Add(new Text(new Vector2(i.Position.X, i.Position.Y - 20), font, Color.Red, "-" + (50 * wave).ToString(), 100, new Vector2(0, -0.5f)));
                         i.dead = true;
                     }
+                    if (i.target == PlayerEnum.Player1)
+                    {
+                        Vector2 tempDirection = i.Position - player.Position;
+                        if (tempDirection != Vector2.Zero)
+                            tempDirection.Normalize();
+                        i.DirectionAgainst = tempDirection;
+                    }
+                    else if (i.target == PlayerEnum.Player2)
+                    {
+                        Vector2 tempDirection = i.Position - player2.Position;
+                        if (tempDirection != Vector2.Zero)
+                            tempDirection.Normalize();
+                        i.DirectionAgainst = tempDirection;
+                    }
                     if (i.Position.X < 0 && !player.dead)
                     {
                         if (player1IsIn && player2IsIn && player1life > 0 && player2life > 0)
                         {
-
                             int temp = r.Next(2);
                             if (temp == 1)
                             {
-                                Vector2 tempDirection = i.Position - player.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
-                                i.divingAgainst = true;
+                                i.target = PlayerEnum.Player1;
                             }
                             else
                             {
-
-                                Vector2 tempDirection = i.Position - player2.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
-                                i.divingAgainst = true;
+                                i.target = PlayerEnum.Player2;
                             }
+                            i.divingAgainst = true;
                         }
                         else if (player1IsIn && !player2IsIn || player2life == 0)
                         {
-                            Vector2 tempDirection = i.Position - player.Position;
-                            if (tempDirection != Vector2.Zero)
-                                tempDirection.Normalize();
-                            i.DirectionAgainst = tempDirection;
+                            i.target = PlayerEnum.Player1;
                             i.divingAgainst = true;
                         }
                         else if (player2IsIn && !player1IsIn || player1life == 0)
                         {
-                            Vector2 tempDirection = i.Position - player2.Position;
-                            if (tempDirection != Vector2.Zero)
-                                tempDirection.Normalize();
-                            i.DirectionAgainst = tempDirection;
+                            i.target = PlayerEnum.Player2;
                             i.divingAgainst = true;
                         }
                     }
@@ -504,40 +503,25 @@ namespace Invaders
                     {
                         if (player1IsIn && player2IsIn && player1life > 0 && player2life > 0)
                         {
-
                             int temp = r.Next(2);
                             if (temp == 1)
                             {
-                                Vector2 tempDirection = i.Position - player.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
-                                i.divingAgainst = true;
+                                i.target = PlayerEnum.Player1;
                             }
                             else
                             {
-
-                                Vector2 tempDirection = i.Position - player2.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
-                                i.divingAgainst = true;
+                                i.target = PlayerEnum.Player2;
                             }
+                            i.divingAgainst = true;
                         }
                         else if (player1IsIn && !player2IsIn || player2life == 0)
                         {
-                            Vector2 tempDirection = i.Position - player.Position;
-                            if (tempDirection != Vector2.Zero)
-                                tempDirection.Normalize();
-                            i.DirectionAgainst = tempDirection;
+                            i.target = PlayerEnum.Player1;
                             i.divingAgainst = true;
                         }
                         else if (player2IsIn && !player1IsIn || player1life == 0)
                         {
-                            Vector2 tempDirection = i.Position - player2.Position;
-                            if (tempDirection != Vector2.Zero)
-                                tempDirection.Normalize();
-                            i.DirectionAgainst = tempDirection;
+                            i.target = PlayerEnum.Player2;
                             i.divingAgainst = true;
                         }
                     }
@@ -559,36 +543,23 @@ namespace Invaders
                                 temp = r.Next(2);
                                 if (temp == 1)
                                 {
-                                    Vector2 tempDirection = i.Position - player.Position;
-                                    if (tempDirection != Vector2.Zero)
-                                        tempDirection.Normalize();
-                                    i.DirectionAgainst = tempDirection;
+                                    i.target = PlayerEnum.Player1;
                                     i.divingAgainst = true;
                                 }
                                 else
                                 {
-
-                                    Vector2 tempDirection = i.Position - player2.Position;
-                                    if (tempDirection != Vector2.Zero)
-                                        tempDirection.Normalize();
-                                    i.DirectionAgainst = tempDirection;
+                                    i.target = PlayerEnum.Player2;
                                     i.divingAgainst = true;
                                 }
                             }
                             else if (player1IsIn && !player2IsIn || player2life == 0)
                             {
-                                Vector2 tempDirection = i.Position - player.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
+                                i.target = PlayerEnum.Player1;
                                 i.divingAgainst = true;
                             }
                             else if (player2IsIn && !player1IsIn || player1life == 0)
                             {
-                                Vector2 tempDirection = i.Position - player2.Position;
-                                if (tempDirection != Vector2.Zero)
-                                    tempDirection.Normalize();
-                                i.DirectionAgainst = tempDirection;
+                                i.target = PlayerEnum.Player2;
                                 i.divingAgainst = true;
                             }
                         }

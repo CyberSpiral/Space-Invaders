@@ -612,11 +612,15 @@ namespace Invaders
                     {
                         if (player1IsIn)
                         {
-                            if (i.HitBox.Intersects(player.HitBox) && player1life > 0) { player1life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false; }
+                            if (i.HitBox.Intersects(player.HitBox) && player1life > 0) { player1life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
+                                i.dead = true;
+                            }
                         }
                         if (player2IsIn)
                         {
-                            if (i.HitBox.Intersects(player2.HitBox) && player2life > 0) { player2life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false; }
+                            if (i.HitBox.Intersects(player2.HitBox) && player2life > 0) { player2life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
+                                i.dead = true;
+                            }
                         }
                     }
 

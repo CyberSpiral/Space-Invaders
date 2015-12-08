@@ -1,2 +1,3 @@
 c:\users\daniel.drottson\documents\visual studio 2010\Projects\Invaders\Invaders\InvadersContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\kasper.boyefrick\Documents\GitHub\Space-Invaders\Invaders\InvadersContent\obj\x86\Debug\InvadersContent.contentprojResolveAssemblyReference.cache
+D:\Användare\Kasper\Dokument (D)\GitHub\Space-Invaders\Invaders\InvadersContent\obj\x86\Debug\InvadersContent.contentprojResolveAssemblyReference.cache

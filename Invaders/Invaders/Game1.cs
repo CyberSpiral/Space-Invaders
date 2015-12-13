@@ -758,14 +758,17 @@ namespace Invaders
                     spriteBatch.DrawString(font, "Press the\nenter key\nto start\nsingle player", new Vector2(320, 50), Color.White);
                 }
             }
-            if (betweenRound)
+            if (!player1HasSelected && betweenRound && selectablePowers1.Count == 3)
             {
-                if (selectablePowers2.Count == 3)
-                {
-                    spriteBatch.Draw(powers, new Vector2(100, 100), new Rectangle(80 * (int)selectablePowers2[0], 0, 80, 160), Color.White);
-                    spriteBatch.Draw(powers, new Vector2(300, 100), new Rectangle(80 * (int)selectablePowers2[1], 0, 80, 160), Color.White);
-                    spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
-                }
+                spriteBatch.Draw(powers, new Vector2(100, 100), new Rectangle(80 * (int)selectablePowers1[0], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers, new Vector2(300, 100), new Rectangle(80 * (int)selectablePowers1[1], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers1[2], 0, 80, 160), Color.White);
+            }
+            if (!player2HasSelected && betweenRound && selectablePowers2.Count == 3)
+            {
+                spriteBatch.Draw(powers, new Vector2(100, 100), new Rectangle(80 * (int)selectablePowers2[0], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers, new Vector2(300, 100), new Rectangle(80 * (int)selectablePowers2[1], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
             }
 
             foreach (Invader i in invaderList) { i.Draw(spriteBatch); }

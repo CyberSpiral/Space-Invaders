@@ -260,6 +260,53 @@ namespace Invaders
                             selectablePowers1.Clear(); selectablePowers2.Clear();
                         }
                     }
+                    if (Keyboard.GetState().IsKeyDown(Keys.I) && !player1HasSelected)
+                    {
+                        selectedPower1 = selectablePowers1[0];
+                        player1HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.O) && !player1HasSelected)
+                    {
+                        selectedPower1 = selectablePowers1[1];
+                        player1HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.P) && !player1HasSelected)
+                    {
+                        selectedPower1 = selectablePowers1[2];
+                        player1HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.D1) && !player2HasSelected)
+                    {
+                        selectedPower2 = selectablePowers2[0];
+                        player2HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.D2) && !player2HasSelected)
+                    {
+                        selectedPower2 = selectablePowers2[1];
+                        player2HasSelected = true;
+                    }
+                    if (Keyboard.GetState().IsKeyDown(Keys.D3) && !player2HasSelected)
+                    {
+                        selectedPower2 = selectablePowers2[2];
+                        player2HasSelected = true;
+                    }
+                    if (player1HasSelected && player2HasSelected)
+                    {
+                        startNextRound = true;
+                    }
+                }
+                else if (player1IsIn && !player2IsIn)
+                {
+                    while (notSelected)
+                    {
+                        selectablePowers1.Add((PowerUpsPlayer1)r.Next(0, 5));
+                        selectablePowers1.Add((PowerUpsPlayer1)r.Next(0, 5));
+                        selectablePowers1.Add((PowerUpsPlayer1)r.Next(0, 5));
+                        if ((selectablePowers1[0] != selectablePowers1[1]) && (selectablePowers1[1] != selectablePowers1[2]) && (selectablePowers1[0] != selectablePowers1[2]))
+                            notSelected = false;
+                        else
+                            selectablePowers1.Clear();
+                    }
                     if (Keyboard.GetState().IsKeyDown(Keys.I))
                     {
                         selectedPower1 = selectablePowers1[0];
@@ -273,53 +320,6 @@ namespace Invaders
                     if (Keyboard.GetState().IsKeyDown(Keys.P))
                     {
                         selectedPower1 = selectablePowers1[2];
-                        player1HasSelected = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D1))
-                    {
-                        selectedPower2 = selectablePowers2[0];
-                        player2HasSelected = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D2))
-                    {
-                        selectedPower2 = selectablePowers2[1];
-                        player2HasSelected = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D3))
-                    {
-                        selectedPower2 = selectablePowers2[2];
-                        player2HasSelected = true;
-                    }
-                    if (player1HasSelected)
-                    {
-                        startNextRound = true;
-                    }
-                }
-                else if (player1IsIn && !player2IsIn)
-                {
-                    while (notSelected)
-                    {
-                        selectablePowers2.Add((PowerUpsPlayer2)r.Next(0, 5));
-                        selectablePowers2.Add((PowerUpsPlayer2)r.Next(0, 5));
-                        selectablePowers2.Add((PowerUpsPlayer2)r.Next(0, 5));
-                        if ((selectablePowers2[0] != selectablePowers2[1]) && (selectablePowers2[1] != selectablePowers2[2]) && (selectablePowers2[0] != selectablePowers2[2]))
-                            notSelected = false;
-                        else
-                            selectablePowers2.Clear();
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D1))
-                    {
-                        selectedPower2 = selectablePowers2[0];
-                        player1HasSelected = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D2))
-                    {
-                        selectedPower2 = selectablePowers2[1];
-                        player1HasSelected = true;
-                    }
-                    if (Keyboard.GetState().IsKeyDown(Keys.D3))
-                    {
-                        selectedPower2 = selectablePowers2[2];
                         player1HasSelected = true;
                     }
                     if (player1HasSelected)
@@ -428,11 +428,6 @@ namespace Invaders
                         invaderList = new List<Invader>();
                         textList.Add(new Text(new Vector2(350, 380), font, Color.White, "Moddad av mig", 60, Vector2.Zero));
                     }
-                }
-
-                if (Keyboard.GetState().IsKeyDown((Keys)72))
-                {
-                    player2.PowerUps.Add(PowerUpsPlayer2.Duoshot);
                 }
 
                 Dive();
@@ -614,13 +609,17 @@ namespace Invaders
                     {
                         if (player1IsIn)
                         {
-                            if (i.HitBox.Intersects(player.HitBox) && player1life > 0) { player1life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
+                            if (i.HitBox.Intersects(player.HitBox) && player1life > 0)
+                            {
+                                player1life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
                                 i.dead = true;
                             }
                         }
                         if (player2IsIn)
                         {
-                            if (i.HitBox.Intersects(player2.HitBox) && player2life > 0) { player2life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
+                            if (i.HitBox.Intersects(player2.HitBox) && player2life > 0)
+                            {
+                                player2life--; invulnerableTimer = 0; shotHimself = false; message = r.Next(8); perfectRound = false;
                                 i.dead = true;
                             }
                         }
@@ -765,12 +764,18 @@ namespace Invaders
                 spriteBatch.Draw(powers1, new Vector2(160, 100), new Rectangle(80 * (int)selectablePowers1[0], 0, 80, 160), Color.White);
                 spriteBatch.Draw(powers1, new Vector2(320, 100), new Rectangle(80 * (int)selectablePowers1[1], 0, 80, 160), Color.White);
                 spriteBatch.Draw(powers1, new Vector2(480, 100), new Rectangle(80 * (int)selectablePowers1[2], 0, 80, 160), Color.White);
+                spriteBatch.DrawString(font, "I", new Vector2(190, 85), Color.White);
+                spriteBatch.DrawString(font, "O", new Vector2(350, 85), Color.White);
+                spriteBatch.DrawString(font, "P", new Vector2(510, 85), Color.White);
             }
             if (!player2HasSelected && betweenRound && selectablePowers2.Count == 3)
             {
                 spriteBatch.Draw(powers2, new Vector2(160, 300), new Rectangle(80 * (int)selectablePowers2[0], 0, 80, 160), Color.White);
                 spriteBatch.Draw(powers2, new Vector2(320, 300), new Rectangle(80 * (int)selectablePowers2[1], 0, 80, 160), Color.White);
                 spriteBatch.Draw(powers2, new Vector2(480, 300), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
+                spriteBatch.DrawString(font, "1", new Vector2(190, 285), Color.White);
+                spriteBatch.DrawString(font, "2", new Vector2(350, 285), Color.White);
+                spriteBatch.DrawString(font, "3", new Vector2(510, 285), Color.White);
             }
 
             foreach (Invader i in invaderList) { i.Draw(spriteBatch); }

@@ -273,15 +273,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="multi.png">
-      <Name>multi</Name>
+    <Compile Include="multi2.png">
+      <Name>multi2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="multi2.png">
-      <Name>multi2</Name>
+    <Compile Include="multi.png">
+      <Name>multi</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

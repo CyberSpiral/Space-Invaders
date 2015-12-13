@@ -28,7 +28,6 @@ namespace Invaders
         public float Rotation { get; set; }
         public Vector2 BulletRotation { get; set; }
         public Vector2 Origin { get; set; }
-        public List<PowerUpsPlayer2> PowerUps { get; set; }
 
 
         // Public booleans
@@ -39,6 +38,7 @@ namespace Invaders
         private int shotDelayTimer = 0;
         private int frame = 0;
         private int animationTimer = 0;
+        private List<PowerUpsPlayer2> powerUps;
 
         // Constructor(s)
         public PlayerTwo(GraphicsDevice graphicsDevice, List<Texture2D> texture, Color color, float speed, Shot shotPrototype, int shotSpeed)
@@ -52,7 +52,7 @@ namespace Invaders
             this.Position = new Vector2((graphicsDevice.Viewport.Width / 2) - (this.Texture[0].Width / 2), graphicsDevice.Viewport.Height - (this.Texture[0].Height * 4));
             this.shotPrototype = shotPrototype;
             this.Shots = new List<Shot>();
-            this.PowerUps = new List<PowerUpsPlayer2>();
+            this.powerUps = new List<PowerUpsPlayer2>();
             this.ShotDelay = shotSpeed;
             this.Origin = new Vector2(this.Position.X + this.Texture[0].Width / 2, this.Position.X + this.Texture[0].Height / 2);
         }
@@ -119,23 +119,29 @@ namespace Invaders
 
         public void GetKeyboardInput(KeyboardState keyboardState, KeyboardState oldKey, GamePadState gamepadState, SoundEffect fireSound)
         {
-            if (keyboardState.IsKeyDown(Keys.Left)) { this.Direction = Directions.Left; }
-            if (keyboardState.IsKeyDown(Keys.Right)) { this.Direction = Directions.Right; }
-            if (keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.Up; }
-            if (keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.Down; }
-            if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.NorthEast; }
-            if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Up)) { this.Direction = Directions.NorthWest; }
-            if (keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.SouthEast; }
-            if (keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Down)) { this.Direction = Directions.SouthWest; }
-            if (keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.Right) && keyboardState.IsKeyUp(Keys.Down) && keyboardState.IsKeyUp(Keys.Up)) { Direction = Directions.None; }
+            if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A)) { this.Direction = Directions.Left; }
+            if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D)) { this.Direction = Directions.Right; }
+            if (keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.W)) { this.Direction = Directions.Up; }
+            if (keyboardState.IsKeyDown(Keys.Down) || keyboardState.IsKeyDown(Keys.S)) { this.Direction = Directions.Down; }
+            if ((keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Up)) || (keyboardState.IsKeyDown(Keys.D) && keyboardState.IsKeyDown(Keys.W)))
+                { this.Direction = Directions.NorthEast; }
+            if ((keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Up)) || (keyboardState.IsKeyDown(Keys.A) && keyboardState.IsKeyDown(Keys.W)))
+                { this.Direction = Directions.NorthWest; }
+            if ((keyboardState.IsKeyDown(Keys.Right) && keyboardState.IsKeyDown(Keys.Down)) || (keyboardState.IsKeyDown(Keys.D) && keyboardState.IsKeyDown(Keys.S)))
+                { this.Direction = Directions.SouthEast; }
+            if ((keyboardState.IsKeyDown(Keys.Left) && keyboardState.IsKeyDown(Keys.Down)) || (keyboardState.IsKeyDown(Keys.A) && keyboardState.IsKeyDown(Keys.S)))
+                { this.Direction = Directions.SouthWest; }
+            if (keyboardState.IsKeyUp(Keys.Left) && keyboardState.IsKeyUp(Keys.Right) && keyboardState.IsKeyUp(Keys.Down) && keyboardState.IsKeyUp(Keys.Up) &&
+                keyboardState.IsKeyUp(Keys.A) && keyboardState.IsKeyUp(Keys.D) && keyboardState.IsKeyUp(Keys.S) && keyboardState.IsKeyUp(Keys.W))
+                { Direction = Directions.None; }
 
-            if (keyboardState.IsKeyDown(Keys.Space) && this.shotDelayTimer == 0 && !PowerUps.Contains(PowerUpsPlayer2.Duoshot) && !PowerUps.Contains(PowerUpsPlayer2.TripleShot))
+            if (keyboardState.IsKeyDown(Keys.Space) && this.shotDelayTimer == 0 && !powerUps.Contains(PowerUpsPlayer2.Duoshot) && !powerUps.Contains(PowerUpsPlayer2.TripleShot))
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
                 this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation - (float)(Math.PI * 0.5f)));
                 this.shotDelayTimer = (int)Math.Round(this.ShotDelay);
             }
-            else if (keyboardState.IsKeyDown(Keys.Space) && oldKey.IsKeyUp(Keys.Space) && this.shotDelayTimer == 0 && PowerUps.Contains(PowerUpsPlayer2.TripleShot))
+            else if (keyboardState.IsKeyDown(Keys.Space) && oldKey.IsKeyUp(Keys.Space) && this.shotDelayTimer == 0 && powerUps.Contains(PowerUpsPlayer2.TripleShot))
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
                 this.Shots.Add(new Shot(new Vector2(this.Position.X - (Texture[0].Width / 2), this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation - (float)(Math.PI * 0.5f)));
@@ -143,7 +149,7 @@ namespace Invaders
                 this.Shots.Add(new Shot(new Vector2(this.Position.X + (Texture[0].Width / 2), this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation - (float)(Math.PI * 0.5f)));
                 this.shotDelayTimer = (int)Math.Round(this.ShotDelay);
             }
-            else if ((keyboardState.IsKeyDown(Keys.Space)) && this.shotDelayTimer == 0 && PowerUps.Contains(PowerUpsPlayer2.Duoshot))
+            else if ((keyboardState.IsKeyDown(Keys.Space)) && this.shotDelayTimer == 0 && powerUps.Contains(PowerUpsPlayer2.Duoshot))
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
                 this.Shots.Add(new Shot(new Vector2(this.Position.X - (Texture[0].Width / 2), this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation - (float)(Math.PI * 0.5f)));
@@ -183,7 +189,8 @@ namespace Invaders
             }
             else
             {
-                PowerUps.Add(power);
+                ShotDelay /= 0.85f;
+                powerUps.Add(power);
             }
         }
     }

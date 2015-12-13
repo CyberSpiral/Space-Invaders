@@ -29,7 +29,6 @@ namespace Invaders
         public Vector2 BulletRotation { get; set; }
         public Vector2 Origin { get; set; }
         public List<Texture2D> ExplosionsTextures { get; set; }
-        public List<PowerUpsPlayer1> PowerUps { get; set; }
 
 
         // Public booleans
@@ -38,9 +37,11 @@ namespace Invaders
         // Private members
         private Shot shotPrototype;
         private int shotDelayTimer = 0;
-        private int shotDelay;
         private int frame = 0;
+        private float extraSpeed;
+        private float shotDelay;
         private int animationTimer = 0;
+        private List<PowerUpsPlayer1> powerUps;
 
         // Constructor(s)
         public Player(GraphicsDevice graphicsDevice, List<Texture2D> texture, Color color, Shot shotPrototype, int shotSpeed, List<Texture2D> textures)
@@ -53,6 +54,7 @@ namespace Invaders
             this.shotPrototype = shotPrototype;
             this.Shots = new List<Shot>();
             this.Explosions = new List<ExplosionShot>();
+            this.powerUps = new List<PowerUpsPlayer1>();
             this.shotDelay = shotSpeed;
             this.Origin = new Vector2(this.Position.X + this.Texture[0].Width / 2, this.Position.X + this.Texture[0].Height / 2);
             this.ExplosionsTextures = textures;
@@ -133,21 +135,21 @@ namespace Invaders
                 (gamepadState.IsButtonUp(Buttons.DPadLeft) && gamepadState.IsButtonUp(Buttons.DPadRight)))
             { this.Direction = Directions.None; }
 
-            if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0)
+            if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0 && !powerUps.Contains(PowerUpsPlayer1.ExplosivePower))
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
-                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed + extraSpeed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));
                 /*this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletPlus45Rotation, this.Rotation + 0.2f, new Vector2(newMouse.X + 50, newMouse.Y)));
                 this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletMinus45Rotation, this.Rotation - 0.2f, new Vector2(newMouse.X - 50, newMouse.Y)));*/
-                this.shotDelayTimer = this.shotDelay;
+                this.shotDelayTimer = (int)Math.Round(this.shotDelay);
             }
-            if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0)
+            else if ((oldMouse.LeftButton == ButtonState.Released && newMouse.LeftButton == ButtonState.Pressed) && this.shotDelayTimer == 0 && powerUps.Contains(PowerUpsPlayer1.ExplosivePower))
             {
                 fireSound.Play(0.5f, 0.0f, 0.0f);
-                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));
-                /*this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletPlus45Rotation, this.Rotation + 0.2f, new Vector2(newMouse.X + 50, newMouse.Y)));
-                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletMinus45Rotation, this.Rotation - 0.2f, new Vector2(newMouse.X - 50, newMouse.Y)));*/
-                this.shotDelayTimer = this.shotDelay;
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed + extraSpeed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletRotation, this.Rotation, new Vector2(newMouse.X, newMouse.Y)));
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed + extraSpeed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletPlus45Rotation, this.Rotation + 0.2f, new Vector2(newMouse.X + 50, newMouse.Y)));
+                this.Shots.Add(new Shot(new Vector2(this.Position.X, this.Position.Y), this.shotPrototype.Speed + extraSpeed, this.shotPrototype.Texture, this.shotPrototype.Color, this.BulletMinus45Rotation, this.Rotation - 0.2f, new Vector2(newMouse.X - 50, newMouse.Y)));
+                this.shotDelayTimer = (int)Math.Round(this.shotDelay);
             }
 
             if (shotDelayTimer > 0) { shotDelayTimer--; }
@@ -171,7 +173,31 @@ namespace Invaders
 
         public void AddPower(PowerUpsPlayer1 power)
         {
-            PowerUps.Add(power);
+            if (power == PowerUpsPlayer1.ShotSpeed)
+            {
+                extraSpeed += 0.5f;
+            }
+            else if (power == PowerUpsPlayer1.ShotSpeedDown)
+            {
+                extraSpeed -= 0.5f;
+            }
+            else if (power == PowerUpsPlayer1.Delay)
+            {
+                shotDelay *= 0.95f;
+            }
+            else if (power == PowerUpsPlayer1.MoreDelay)
+            {
+                shotDelay /= 0.95f;
+            }
+            else if (power == PowerUpsPlayer1.ExplosivePower)
+            {
+                if (!powerUps.Contains(PowerUpsPlayer1.ExplosivePower))
+                {
+                    extraSpeed -= 1.5f;
+                    shotDelay /= 0.80f;
+                }
+                powerUps.Add(PowerUpsPlayer1.ExplosivePower);
+            }
         }
     }
 }

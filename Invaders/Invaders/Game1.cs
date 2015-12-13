@@ -91,7 +91,8 @@ namespace Invaders
         //Crosshair
         Texture2D crosshairTexture;
 
-        Texture2D powers;
+        Texture2D powers1;
+        Texture2D powers2;
         #endregion
         public Game1()
         {
@@ -198,7 +199,8 @@ namespace Invaders
             selectablePowers1 = new List<PowerUpsPlayer1>();
             selectablePowers2 = new List<PowerUpsPlayer2>();
 
-            powers = Content.Load<Texture2D>("multi");
+            powers1 = Content.Load<Texture2D>("multi");
+            powers2 = Content.Load<Texture2D>("multi2");
 
             base.Initialize();
         }
@@ -760,15 +762,15 @@ namespace Invaders
             }
             if (!player1HasSelected && betweenRound && selectablePowers1.Count == 3)
             {
-                spriteBatch.Draw(powers, new Vector2(100, 100), new Rectangle(80 * (int)selectablePowers1[0], 0, 80, 160), Color.White);
-                spriteBatch.Draw(powers, new Vector2(300, 100), new Rectangle(80 * (int)selectablePowers1[1], 0, 80, 160), Color.White);
-                spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers1[2], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers1, new Vector2(160, 100), new Rectangle(80 * (int)selectablePowers1[0], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers1, new Vector2(320, 100), new Rectangle(80 * (int)selectablePowers1[1], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers1, new Vector2(480, 100), new Rectangle(80 * (int)selectablePowers1[2], 0, 80, 160), Color.White);
             }
             if (!player2HasSelected && betweenRound && selectablePowers2.Count == 3)
             {
-                spriteBatch.Draw(powers, new Vector2(100, 100), new Rectangle(80 * (int)selectablePowers2[0], 0, 80, 160), Color.White);
-                spriteBatch.Draw(powers, new Vector2(300, 100), new Rectangle(80 * (int)selectablePowers2[1], 0, 80, 160), Color.White);
-                spriteBatch.Draw(powers, new Vector2(500, 100), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers2, new Vector2(160, 300), new Rectangle(80 * (int)selectablePowers2[0], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers2, new Vector2(320, 300), new Rectangle(80 * (int)selectablePowers2[1], 0, 80, 160), Color.White);
+                spriteBatch.Draw(powers2, new Vector2(480, 300), new Rectangle(80 * (int)selectablePowers2[2], 0, 80, 160), Color.White);
             }
 
             foreach (Invader i in invaderList) { i.Draw(spriteBatch); }

@@ -171,7 +171,6 @@ namespace Invaders
 
         public void AddPower(PowerUpsPlayer1 power)
         {
-
             PowerUps.Add(power);
         }
     }

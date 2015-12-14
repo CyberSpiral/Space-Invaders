@@ -18,7 +18,8 @@ namespace Invaders
         public float Speed { get; set; }
         public Texture2D Texture { get; private set; }
         public Color Color { get; private set; }
-        public Rectangle HitBox { get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); } }
+        public Rectangle HitBox { get { return new Rectangle((int)Position.X - (Texture.Width / 2),
+            (int)Position.Y - (Texture.Height / 2), Texture.Width, Texture.Height); } }
         public Vector2 Direction { get; set; }
         public float Rotation { get; set; }
         public Vector2 Target { get; set; }

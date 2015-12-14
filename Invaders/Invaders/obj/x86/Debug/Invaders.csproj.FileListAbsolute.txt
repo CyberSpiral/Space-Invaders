@@ -120,3 +120,4 @@ D:\Användare\Kasper\Dokument (D)\GitHub\Space-Invaders\Invaders\Invaders\obj\x8
 D:\Användare\Kasper\Dokument (D)\GitHub\Space-Invaders\Invaders\Invaders\obj\x86\Debug\Invaders.exe
 D:\Användare\Kasper\Dokument (D)\GitHub\Space-Invaders\Invaders\Invaders\obj\x86\Debug\Invaders.pdb
 D:\Användare\Kasper\Dokument (D)\GitHub\Space-Invaders\Invaders\Invaders\bin\x86\Debug\Content\multi2.xnb
+C:\Users\kasper.boyefrick\Documents\GitHub\Space-Invaders\Invaders\Invaders\bin\x86\Debug\Content\multi2.xnb

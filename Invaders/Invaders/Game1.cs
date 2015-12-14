@@ -625,9 +625,13 @@ namespace Invaders
                         }
                     }
 
-                    if (player2life == 0)
+                    if (player1life == 0 && player2life > 0)
                     {
-                        player2.Position = new Vector2(50, GraphicsDevice.Viewport.Height - 70);
+                        i.target = PlayerEnum.Player2;
+                    }
+                    if (player2life == 0 && player1life > 0)
+                    {
+                        i.target = PlayerEnum.Player1;
                     }
                     if (player1IsIn && player2IsIn)
                     {
@@ -644,6 +648,10 @@ namespace Invaders
 
 
                 }
+            }
+            if (player2life == 0)
+            {
+                player2.Position = new Vector2(50, GraphicsDevice.Viewport.Height - 70);
             }
             if (invaderList.Count == 0 && !player.dead && gameHasBegun && betweenRound == false)
             {

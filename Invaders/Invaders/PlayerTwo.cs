@@ -24,7 +24,8 @@ namespace Invaders
         public List<Texture2D> Texture { get; private set; }
         public Color Color { get; private set; }
         public List<Shot> Shots { get; set; }
-        public Rectangle HitBox { get { return new Rectangle((int)Position.X, (int)Position.Y, Texture[0].Width, Texture[0].Height); } }
+        public Rectangle HitBox { get { return new Rectangle((int)Position.X - (Texture[0].Width / 2),
+            (int)Position.Y - (Texture[0].Height / 2), Texture[0].Width, Texture[0].Height); } }
         public float Rotation { get; set; }
         public Vector2 BulletRotation { get; set; }
         public Vector2 Origin { get; set; }
